@@ -26,8 +26,6 @@ router.post('/', (req, res) => {
         String(req.body.title),
         String(req.body.content),
         String(req.body.image),
-        Number(req.body.price),
-        Number(req.params.id)
     ];
     connection.query(`INSERT INTO article (title, content, image) VALUES (?, ?, ?)`, data,
         (err, result) => {

@@ -2,7 +2,7 @@
 -- Create database `blog`
 --
 
-CREATE DATABASE `blog`
+CREATE DATABASE `blog`;
 
 --
 -- Structure de la table `article`

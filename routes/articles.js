@@ -28,7 +28,7 @@ router.delete('/:id', (req, res) => {
     connection.query('DELETE FROM article WHERE id=?', id, (err, result) => {
         if (err) res.status(500).send(`Erreur lors de la suppression de l'article !!`);
         else {
-            result.length > 0 ?
+            result ?
                 res.status(200).send(`L'article id ${id} a bien été supprimé !!`)
                 :
                 res.status(404).send(`L'article id ${id} n'existe pas !!`);

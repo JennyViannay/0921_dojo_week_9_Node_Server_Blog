@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import articlesRoutes from './routes/articles.js';
 import categoriesRoutes from './routes/categories.js';
+import usersRoutes from './routes/users.js';
 
 const app = express();
 const PORT = 5000;
@@ -15,6 +16,7 @@ app.use(express.urlencoded({
 
 app.use('/articles', articlesRoutes);
 app.use('/categories', categoriesRoutes);
+app.use('/users', usersRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello From HomePage')

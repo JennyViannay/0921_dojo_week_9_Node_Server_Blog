@@ -1,14 +1,17 @@
 import express from 'express';
 import connection from '../config/config.js';
+import Articles from '../models/articles.js'
 // All routes in this file starting by '/articles'
 const router = express.Router();
 
 // GET ALL
-router.get('/', (req, res) => {
-    connection.query('SELECT * FROM article', (err, results) => {
-        if (err) res.status(500).send(`Erreur lors de la récupération des articles !!`);
-        else res.status(200).send(results);
-    });
+router.get('/', async (req, res) => {
+    try {
+        const articles = await Articles.findAllArticles();
+        res.send(articles)
+    } catch (error) {
+        res.status(500).json('Erreur lors de la récupération des articles !!')
+    }
 });
 
 // GET ONE

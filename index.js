@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 
-import articlesRoutes from './routes/articles.js';
-import categoriesRoutes from './routes/categories.js';
-import usersRoutes from './routes/users.js';
+import { setupRoutes } from './routes/index.js'
 
 const app = express();
-const PORT = 5000;
+const PORT = 5005;
 
 app.use(cors('*'));
 app.use(express.json());
@@ -14,9 +12,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.use('/articles', articlesRoutes);
-app.use('/categories', categoriesRoutes);
-app.use('/users', usersRoutes);
+setupRoutes(app);
 
 app.get('/', (req, res) => {
     res.send('Hello From HomePage')
